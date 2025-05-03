@@ -21,7 +21,7 @@ if file_uploader is not None:
     selection = st.pills("Select the options for Image Augmentation", options, selection_mode="multi")
     st.markdown(f"Your selected options: {selection}.")
 
-
+    st.write(selection)
     if selection == "Translation": 
         tx=150  
         ty=60 
