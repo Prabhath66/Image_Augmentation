@@ -20,6 +20,6 @@ if file_uploader is not None:
     ty=60 
     tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
     trans_img=cv2.warpAffine(img, tm, dsize=(x,y) ) 
-    st.image([img, trans_img] , captions=["Original Image", "Translation Image"],  channels="BGR")
+    st.image([img, trans_img] , caption=["Original Image", "Translation Image"],  channels="BGR")
     
 
