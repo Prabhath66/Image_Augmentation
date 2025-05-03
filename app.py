@@ -23,13 +23,15 @@ st.write(selection)
 for i in selection:
     st.write(i)
     if i == "Translation": 
-        tx, ty=np.random.randint(-60,60), np.random.randint(-50,150) 
-        st.write(f'Tx:{tx},Ty: {ty}')
+        tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
         tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
-        st.write(f"TM: {tm}")
-        trans_img=cv2.warpAffine(img, tm, dsize=(col,row) ) 
-        a=trans_img.shape
-        st.write(a)
-        st.image([img, trans_img] , caption=["Original Image", "Translation Image"],  channels="BGR")
-    
+        trans_img=cv2.warpAffine(img, tm, dsize=(col,row), borderMode=cv2.BORDER_REFLECT ) 
+        st.image([img, trans_img] , caption=["Original Image", "Translation Image"],  channels="BGR") 
+
+    elif i == "Rotation": 
+        center=(np.random.randint(-60,60)//2, np.random.randint(-60,60)//2)
+        angle=np.random.randint(-360,360) 
+        rm=cv2.getRotationMatrix2D(center, angle, 1 )
+        rotat_img=cv2.warpAffine(img, rm, 1)
+        st.image(rotat_img , caption="Rotation Image", )
 
