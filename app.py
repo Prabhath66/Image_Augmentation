@@ -4,7 +4,7 @@ import cv2
 
 file_uploader=st.file_uploader("Choose an image") 
 if file_uploader is not None:
-    st.write(np.array(file_uploader.getvalue(),dtype=np.unit8))
+    st.write(np.array(file_uploader.getvalue(),dtype=np.uint8))
 options = ["Shifting (Translation)", "Rotation", "Scaling", "Shearing","Cropping", "Brightness"] 
 selection = st.pills("Select the options for Image Augmentation", options, selection_mode="multi")
 st.markdown(f"Your selected options: {selection}.") 
