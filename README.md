@@ -3,8 +3,8 @@ title: Image Augmentation
 emoji: 🏃
 colorFrom: yellow
 colorTo: purple
-sdk: gradio
-sdk_version: 5.29.0
+sdk: streamlit
+sdk_version: 1.45.0
 app_file: app.py
 pinned: false
 ---
