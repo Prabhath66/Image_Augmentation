@@ -14,9 +14,6 @@ if selection == "Shifting (Translation)":
     ty=60 
     tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
     trans_img=cv2.warpAffine(img, tm, dsize=(500,600) ) 
-    cv2.imshow("Original Image", img) 
-    cv2.imshow("Transformed Image", trans_img)
-    cv2.waitKey() 
-    cv2.destroyAllWindows() 
+    st.image(trans_img)
     
     
