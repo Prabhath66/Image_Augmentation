@@ -13,18 +13,18 @@ if file_uploader is not None:
     img = cv2.imdecode(file_bytes, 1) # 1 is for color image 
     st.image(img,  caption="Original Image", channels="BGR")
     a=img.shape
-    x,y = img.shape[0:2]
-    st.write(a,x,y)
+    row,col = img.shape[0:2]
+    st.write(a,row,col)
  
 
 
-    #if selection == "Shifting (Translation)": 
-    tx=150  
-    ty=60 
-    tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
-    trans_img=cv2.warpAffine(img, tm, dsize=(y,x) ) 
-    a=trans_img.shape
-    st.write(a)
-    st.image([img, trans_img] , caption=["Original Image", "Translation Image"],  channels="BGR")
+    if selection == "Shifting (Translation)": 
+        tx=150  
+        ty=60 
+        tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
+        trans_img=cv2.warpAffine(img, tm, dsize=(col,row) ) 
+        a=trans_img.shape
+        st.write(a)
+        st.image([img, trans_img] , caption=["Original Image", "Translation Image"],  channels="BGR")
     
 
