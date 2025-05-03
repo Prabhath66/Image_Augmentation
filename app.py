@@ -4,9 +4,9 @@ import cv2
 
 file_uploader=st.file_uploader("Choose an image")  
 
-options = ["Translation", "Rotation", "Scaling", "Shearing","Cropping", "Brightness"] 
-selection = st.pills("Select the options for Image Augmentation", options, selection_mode="multi")
-st.markdown(f"Your selected options: {selection}.")
+# options = ["Translation", "Rotation", "Scaling", "Shearing","Cropping", "Brightness"] 
+# selection = st.pills("Select the options for Image Augmentation", options, selection_mode="multi")
+# st.markdown(f"Your selected options: {selection}.")
 
 if file_uploader is not None:
     file_bytes = np.frombuffer(file_uploader.read(), np.uint8)
@@ -15,7 +15,11 @@ if file_uploader is not None:
     a=img.shape
     row,col = img.shape[0:2]
     st.write(a,row,col)
- 
+
+    
+    options = ["Translation", "Rotation", "Scaling", "Shearing","Cropping", "Brightness"] 
+    selection = st.pills("Select the options for Image Augmentation", options, selection_mode="multi")
+    st.markdown(f"Your selected options: {selection}.")
 
 
     if selection == "Translation": 
