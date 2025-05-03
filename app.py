@@ -62,7 +62,7 @@ for i in selection:
 
 
     elif i == "Brightness": 
-        bright_arr=np.full((cols,rows,3),np.random.randint(0,255,dtype=np.uint8),)
+        bright_arr=np.full((cols,rows),np.random.randint(0,255,dtype=np.uint8),)
         if np.random.choice(["a","b"]) =="a": 
             bright_img=cv2.add(img,bright_arr)
         else:
