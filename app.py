@@ -10,16 +10,16 @@ if file_uploader is not None:
     a=img.shape
     x,y = img.shape[0:2]
     st.write(a,x,y)
-options = ["Shifting (Translation)", "Rotation", "Scaling", "Shearing","Cropping", "Brightness"] 
-selection = st.pills("Select the options for Image Augmentation", options, selection_mode="multi")
-st.markdown(f"Your selected options: {selection}.") 
+# options = ["Shifting (Translation)", "Rotation", "Scaling", "Shearing","Cropping", "Brightness"] 
+# selection = st.pills("Select the options for Image Augmentation", options, selection_mode="multi")
+# st.markdown(f"Your selected options: {selection}.") 
 
 
-#if selection == "Shifting (Translation)": 
-tx=50  
-ty=60 
-tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
-trans_img=cv2.warpAffine(img, tm, dsize=(x,y) ) 
-st.image([img, trans_img] , captions=["Original Image", "Translation Image"],  channels="BGR")
+    #if selection == "Shifting (Translation)": 
+    tx=50  
+    ty=60 
+    tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
+    trans_img=cv2.warpAffine(img, tm, dsize=(x,y) ) 
+    st.image([img, trans_img] , captions=["Original Image", "Translation Image"],  channels="BGR")
     
 
