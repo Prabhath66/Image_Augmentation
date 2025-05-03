@@ -38,7 +38,8 @@ for i in selection:
         st.image(rotat_img , caption="Rotation Image",  channels="BGR" )
 
     elif i == "Scaling": 
-        sx, sy =  np.random.uniform(0.3,1.5), np.random.uniform(0.3,1.5)
+        sx, sy =  np.random.uniform(0.3,1.5), np.random.uniform(0.3,1.5) 
+        st.write(f"Sx:{sx}, Sy:{sy}")
         rm=np.array([[sx,0,0],[0,sy,0]],dtype=np.float32) 
         scale_img=cv2.warpAffine(img, rm, dsize=(col,row))
         st.image(scale_img , caption="Scaling Image",  channels="BGR" )
