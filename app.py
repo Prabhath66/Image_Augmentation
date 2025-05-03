@@ -24,9 +24,9 @@ for i in selection:
     st.write(i)
     if i == "Translation": 
         tx, ty=np.random.randint(-60,60), np.random.randint(-50,150) 
-        st.write(tx,ty)
+        st.write(f'Tx:{tx},Ty: {ty}')
         tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
-        st.write(tm)
+        st.write(f"TM: {tm}")
         trans_img=cv2.warpAffine(img, tm, dsize=(col,row) ) 
         a=trans_img.shape
         st.write(a)
