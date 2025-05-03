@@ -4,7 +4,7 @@ import cv2
 
 file_uploader=st.file_uploader("Choose an image")  
 
-options = ["Shifting (Translation)", "Rotation", "Scaling", "Shearing","Cropping", "Brightness"] 
+options = ["Translation", "Rotation", "Scaling", "Shearing","Cropping", "Brightness"] 
 selection = st.pills("Select the options for Image Augmentation", options, selection_mode="multi")
 st.markdown(f"Your selected options: {selection}.")
 
@@ -18,7 +18,7 @@ if file_uploader is not None:
  
 
 
-    if selection == "Shifting (Translation)": 
+    if selection == "Translation": 
         tx=150  
         ty=60 
         tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
