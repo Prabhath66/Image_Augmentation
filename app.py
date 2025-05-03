@@ -63,12 +63,14 @@ for i in selection:
 
     elif i == "Brightness": 
         bright_arr=np.full((cols,rows),np.random.randint(0,255,dtype=np.uint8),)
-        if np.random.choice(["a","b"]) =="a": 
-            bright_img=cv2.add(img,bright_arr)
-        else:
-            bright_img=cv2.subtract(img,bright_arr)
+        st.write(bright_arr.shape)
+        st.write(img.shape)
+        # if np.random.choice(["a","b"]) =="a": 
+        #     bright_img=cv2.add(img,bright_arr)
+        # else:
+        #     bright_img=cv2.subtract(img,bright_arr)
             
-        st.image(bright_img , caption="Brightness Image",  channels="BGR" )
+        # st.image(bright_img , caption="Brightness Image",  channels="BGR" )
 
 
 
