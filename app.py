@@ -61,7 +61,14 @@ for i in selection:
         st.image(crop_img , caption="Cropping Image",  channels="BGR" )
 
 
-
+    elif i == "Brightness": 
+        bright_arr=np.full((cols,rows,3),np.random.randint(0,255,dtype=np.uint8),)
+        if np.random.choice(["a","b"]) =="a": 
+            bright_img=cv2.add(img,brig)
+        else:
+            bright_img=cv2.subtract(img,brig)
+            
+        st.image(bright_img , caption="Brightness Image",  channels="BGR" )
 
 
 
