@@ -30,7 +30,7 @@ for i in selection:
         st.image([img, trans_img] , caption=["Original Image", "Translation Image"],  channels="BGR") 
 
     elif i == "Rotation": 
-        center=(row//2, col//2)
+        center=(col//2, row//2)
         angle=np.random.randint(-360,360) 
         st.write(f"Center:{center}, Angle:{angle}")
         rm=cv2.getRotationMatrix2D(center, angle, 1 )
