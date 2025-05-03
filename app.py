@@ -11,7 +11,7 @@ options = ["Translation", "Rotation", "Scaling", "Shearing","Cropping", "Brightn
 selection = st.sidebar.pills("Select the options for Image Augmentation", options, selection_mode="multi")
 st.sidebar.markdown(f"Your selected options: {selection}.")
 
-nummber_of_images=number = st.sidebar.number_input("Number of Augmented Images Required:", value=None, placeholder="Type a number...")
+nummber_of_images=number = st.sidebar.number_input("Number of Augmented Images Required:", value=None,min_value=0, step=1, placeholder="Type a number...")
 
 
 if file_uploader is not None:
