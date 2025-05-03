@@ -6,7 +6,7 @@ file_uploader=st.file_uploader("Choose an image")
 if file_uploader is not None:
     file_bytes = np.frombuffer(file_uploader.read(), np.uint8)
     img = cv2.imdecode(file_bytes, 0) 
-    st.image(img,  caption="Original Image",channels="BGR")
+    st.image(img,  caption="Original Image")
     a=img.shape
     x,y = img.shape[0:2]
     st.write(a,x,y)
