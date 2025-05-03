@@ -1,6 +1,7 @@
 import streamlit as st 
 import numpy as np 
 import cv2
+import random 
 
 file_uploader=st.file_uploader("Choose an image")  
 
@@ -22,9 +23,10 @@ st.write(selection)
 for i in selection:
     st.write(i)
     if i == "Translation": 
-        tx=150  
-        ty=60 
+        tx, ty=np.random.randint(-60,60), np.random.randint(-50,150) 
+        st.write(tx,ty)
         tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
+        st.write(tm)
         trans_img=cv2.warpAffine(img, tm, dsize=(col,row) ) 
         a=trans_img.shape
         st.write(a)
