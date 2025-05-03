@@ -14,8 +14,8 @@ if file_uploader is not None:
     img = cv2.imdecode(file_bytes, 1) # 1 is for color image 
     #st.image(img,  caption="Original Image", channels="BGR")
     a=img.shape
-    row,col = img.shape[0:2]
-    st.write(a,row,col)
+    rows,cols = img.shape[0:2]
+    st.write(a,rows,cols)
 
 
 
@@ -26,7 +26,7 @@ for i in selection:
         tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
         st.write(f"Tx: {tx}, Ty={ty}")
         tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
-        trans_img=cv2.warpAffine(img, tm, dsize=(col,row)) 
+        trans_img=cv2.warpAffine(img, tm, dsize=(cols,rows)) 
         st.image(trans_img , caption= "Translation Image",  channels="BGR") 
 
     elif i == "Rotation": 
@@ -34,21 +34,21 @@ for i in selection:
         angle=np.random.randint(-360,360) 
         st.write(f"Center:{center}, Angle:{angle}")
         rm=cv2.getRotationMatrix2D(center, angle, 1 )
-        rotat_img=cv2.warpAffine(img, rm, dsize=(col,row))
+        rotat_img=cv2.warpAffine(img, rm, dsize=(cols,rows))
         st.image(rotat_img , caption="Rotation Image",  channels="BGR" )
 
     elif i == "Scaling": 
         sx, sy =  np.random.uniform(0.3,1.5), np.random.uniform(0.3,1.5) 
         st.write(f"Sx:{sx}, Sy:{sy}")
         rm=np.array([[sx,0,0],[0,sy,0]],dtype=np.float32) 
-        scale_img=cv2.warpAffine(img, rm, dsize=(col,row))
+        scale_img=cv2.warpAffine(img, rm, dsize=(cols,rows))
         st.image(scale_img , caption="Scaling Image",  channels="BGR" )
 
     elif i == "Shearing": 
         shx, shy =  np.random.uniform(0,0.35), np.random.uniform(0,0.35) 
         st.write(f"Shx:{shx}, Sy:{shy}")
         shm = np.array([[1,shx,0],[shy,1,0]],dtype=np.float32) 
-        shear_img=cv2.warpAffine(img, shm, dsize=(col,row))
+        shear_img=cv2.warpAffine(img, shm, dsize=(cols,rows))
         st.image(shear_img , caption="Shearing Image",  channels="BGR" )
 
     elif i == "Cropping":
