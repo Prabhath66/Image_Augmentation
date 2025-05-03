@@ -35,5 +35,11 @@ for i in selection:
         st.write(f"Center:{center}, Angle:{angle}")
         rm=cv2.getRotationMatrix2D(center, angle, 1 )
         rotat_img=cv2.warpAffine(img, rm, dsize=(col,row))
-        st.image(rotat_img , caption="Rotation Image", )
+        st.image(rotat_img , caption="Rotation Image",  channels="BGR" )
+
+    elif i == "Scaling": 
+        sx, sy =  np.random.uniform(0.3,1.5), np.random.uniform(0.3,1.5)
+        rm=np.array([[sx,0,0],[0,sy,0]],dtype=np.float32) 
+        scale_img=cv2.warpAffine(img, rm, dsize=(col,row))
+        st.image(scale_img , caption="Scaling Image",  channels="BGR" )
 
