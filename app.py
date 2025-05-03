@@ -48,6 +48,6 @@ for i in selection:
         shx, shy =  np.random.uniform(0,0.35), np.random.uniform(0,0.35) 
         st.write(f"Shx:{shx}, Sy:{shy}")
         shm = np.array([[1,shx,0],[shy,1,0]],dtype=np.float32) 
-        shear_img=cv2.warpAffine(img, rm, dsize=(col,row))
+        shear_img=cv2.warpAffine(img, shm, dsize=(col,row))
         st.image(shear_img , caption="Shearing Image",  channels="BGR" )
 
