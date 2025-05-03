@@ -11,6 +11,9 @@ options = ["Translation", "Rotation", "Scaling", "Shearing","Cropping", "Brightn
 selection = st.sidebar.pills("Select the options for Image Augmentation", options, selection_mode="multi")
 st.sidebar.markdown(f"Your selected options: {selection}.")
 
+nummber_of_images=number = st.sidebar.number_input("Number of Augmented Images Required:", value=None, placeholder="Type a number...")
+
+
 if file_uploader is not None:
     file_bytes = np.frombuffer(file_uploader.read(), np.uint8)
     img = cv2.imdecode(file_bytes, 1) # 1 is for color image 
