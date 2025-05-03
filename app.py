@@ -8,7 +8,7 @@ st.markdown(f"Your selected options: {selection}.")
 
 
 if selection == "Shifting (Translation)": 
-    img=cv2.imread(r"C:\Users\91912\Desktop\Prabhas.jpg")      
+    img=cv2.imread(file_uploader)        
     img=cv2.resize(img,(500,600)) 
     tx=50  
     ty=60 
