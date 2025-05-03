@@ -27,7 +27,7 @@ for i in selection:
         st.write(f"Tx: {tx}, Ty={ty}")
         tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
         trans_img=cv2.warpAffine(img, tm, dsize=(col,row)) 
-        st.image([img, trans_img] , caption=["Original Image", "Translation Image"],  channels="BGR") 
+        st.image(trans_img , caption= "Translation Image",  channels="BGR") 
 
     elif i == "Rotation": 
         center=(col//2, row//2)
@@ -43,4 +43,11 @@ for i in selection:
         rm=np.array([[sx,0,0],[0,sy,0]],dtype=np.float32) 
         scale_img=cv2.warpAffine(img, rm, dsize=(col,row))
         st.image(scale_img , caption="Scaling Image",  channels="BGR" )
+
+    elif i == "Shearing": 
+        shx, shy =  np.random.uniform(0,0.35), np.random.uniform(0,0.35) 
+        st.write(f"Shx:{shx}, Sy:{shy}")
+        shm = np.array([[1,shx,0],[shy,1,0]],dtype=np.float32) 
+        shear_img=cv2.warpAffine(img, rm, dsize=(col,row))
+        st.image(shear_img , caption="Shearing Image",  channels="BGR" )
 
