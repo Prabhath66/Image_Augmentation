@@ -51,7 +51,7 @@ for i in selection:
         shear_img=cv2.warpAffine(img, shm, dsize=(col,row))
         st.image(shear_img , caption="Shearing Image",  channels="BGR" )
 
-    elif option == "Cropping":
+    elif i == "Cropping":
         x1 = random.randint(0, cols // 5)
         y1 = random.randint(0, rows // 5)
         x2 = random.randint(4 * cols // 5, cols)
