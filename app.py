@@ -24,6 +24,7 @@ for i in selection:
     st.write(i)
     if i == "Translation": 
         tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
+        st.write(f"Tx: {tx}, Ty={ty}")
         tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
         trans_img=cv2.warpAffine(img, tm, dsize=(col,row)) 
         st.image([img, trans_img] , caption=["Original Image", "Translation Image"],  channels="BGR") 
@@ -31,6 +32,7 @@ for i in selection:
     elif i == "Rotation": 
         center=(np.random.randint(-60,60)//2, np.random.randint(-60,60)//2)
         angle=np.random.randint(-360,360) 
+        st.write(f"Center:{center}, Angle:{angle}")
         rm=cv2.getRotationMatrix2D(center, angle, 1 )
         rotat_img=cv2.warpAffine(img, rm, dsize=(col,row))
         st.image(rotat_img , caption="Rotation Image", )
