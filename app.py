@@ -15,9 +15,8 @@ if file_uploader is not None:
     file_bytes = np.frombuffer(file_uploader.read(), np.uint8)
     img = cv2.imdecode(file_bytes, 1) # 1 is for color image 
     st.image(img,  caption="Original Image", channels="BGR")
-    #a=img.shape
-    #rows,cols = img.shape[0:2]
-    #st.write(a,rows,cols)
+    rows,cols = img.shape[0:2]
+    #st.write(rows,cols)
 
 
 
