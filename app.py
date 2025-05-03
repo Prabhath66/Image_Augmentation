@@ -76,14 +76,17 @@ for i in selection:
 
 
     elif i == "Grayscale":
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        img = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) # converting img into gray scale with shape (rows,cols)
+        gray_img = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR) # converting gray image into bgr image having 3- with shape (rows,cols,depth)
+        st.image(gray_img , caption="GrayScale Image",  )
 
     elif i == "Flip Horizontally":
-        img = cv2.flip(img, 1)
+        fliphor_img = cv2.flip(img, 1) 
+        st.image(fliphor_img , caption="Flip Horizontally Image",  channels="BGR" )
 
     elif i == "Flip Vertically":
-        img = cv2.flip(img, 0)
+        flipver_img = cv2.flip(img, 0)
+        st.image(flipver_img , caption="Flip Vertically Image",  channels="BGR" )
 
 
 # st.sidebar.header("🔧 Augmentation Settings")
