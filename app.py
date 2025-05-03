@@ -22,13 +22,15 @@ if file_uploader is not None:
     st.markdown(f"Your selected options: {selection}.")
 
     st.write(selection)
-    if selection == "Translation": 
-        tx=150  
-        ty=60 
-        tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
-        trans_img=cv2.warpAffine(img, tm, dsize=(col,row) ) 
-        a=trans_img.shape
-        st.write(a)
-        st.image([img, trans_img] , caption=["Original Image", "Translation Image"],  channels="BGR")
+    for i in selection:
+        st.write(i)
+        if i == "Translation": 
+            tx=150  
+            ty=60 
+            tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
+            trans_img=cv2.warpAffine(img, tm, dsize=(col,row) ) 
+            a=trans_img.shape
+            st.write(a)
+            st.image([img, trans_img] , caption=["Original Image", "Translation Image"],  channels="BGR")
     
 
