@@ -14,6 +14,6 @@ if selection == "Shifting (Translation)":
     ty=60 
     tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
     trans_img=cv2.warpAffine(img, tm, dsize=(500,600) ) 
-    st.image(trans_img)
+    st.image([img, trans_img] , captions=["Original Image", "Translation Image"],channels="BGR")
     
     
