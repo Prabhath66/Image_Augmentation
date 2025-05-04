@@ -70,13 +70,17 @@ def flip_vertically(picture):
     st.image(flipver_img , caption="Flip Vertically Image",  channels="BGR" )
     return flipver_img
 
+
+
+
 file_uploader=st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])  
 
 options = st.sidebar.pills("Select the options for Image Augmentation", ["Translation", "Rotation", "Scaling", "Shearing","Cropping", "Brightness","Grayscale","Flip Horizontally","Flip Vertically"] ,
                              selection_mode="multi")
 st.sidebar.markdown(f"Your selected options: {options}.")
 
-number_of_images=number = st.sidebar.number_input("Number of Augmented Images Required:", value=len(options),min_value=0, step=len(options), placeholder="Type a number...")
+#number_of_images=number = st.sidebar.number_input("Number of Augmented Images Required:", value=len(options),min_value=0, step=len(options), placeholder="Type a number...")
+number_of_images=number = st.sidebar.number_input("Number of Augmented Images Required:", min_value=0, step=1, placeholder="Type a number...")
 
 
 if file_uploader is not None:
@@ -86,49 +90,128 @@ if file_uploader is not None:
     rows,cols = original_img.shape[0:2]
     #st.write(rows,cols)
 
-    if options:
-        
-        if (number_of_images % len(options)==0) or (number_of_images==0):                      
-        
-            transformed_augment_imgs=[]
-            
-            for i in range(int(number_of_images/len(options))):
-                img=original_img.copy()         
-            
-                if "Translation" in options: 
-                    transformed_augment_imgs.append(translation(img))
-                    
-                if "Rotation" in options: 
-                    transformed_augment_imgs.append(rotation(img))
-                
-                if "Scaling" in options:
-                    transformed_augment_imgs.append(scaling(img))
-            
-                if "Shearing" in options:
-                    transformed_augment_imgs.append(shearing(img))
-            
-                if "Cropping" in options:
-                    transformed_augment_imgs.append(cropping(img))
-            
-                if "Brightness" in options:
-                    transformed_augment_imgs.append(brightness(img))    
+    transformed_augment_imgs=[] 
+    
+    for i in number_of_images:
+        img=original_img.copy() 
 
-                if "Grayscale" in options:
-                    transformed_augment_imgs.append(grayscale(img))
-            
-                if "Flip Horizontally" in options:
-                    transformed_augment_imgs.append(flip_horizontally(img))
-            
-                if "Flip Vertically" in options:
-                    transformed_augment_imgs.append(flip_vertically(img))                    
+        for option in options: 
+
+            if option =="Translation":
+                img=translation(img) 
+
+            elif option =="Rotation":
+                img=rotation(img) 
+
+            elif option =="Scaling":
+                img=scaling(img) 
+
+            elif option =="Shearing":
+                img=shearing(img) 
+
+            elif option =="Cropping":
+                img=cropping(img) 
+
+            elif option =="Brightness":
+                img=brightness(img)  
+
+            elif option =="Grayscale":
+                img=grayscale(img) 
+
+            elif option =="Flip Horizontally":
+                img=flip_horizontally(img) 
+
+            elif option =="Flip Vertically":
+                img=flip_vertically(img) 
+        
+        
+    transformed_augment_imgs.append(img)  
+
+    st.write(len(transformed_augment_imgs))
+
+
+    for i in transformed_augment_imgs:
+        st.image(i)
     
-            st.write(len(transformed_augment_imgs))
-            
-        else:
-            st.error(f"The 'Number of Augmented Images Required' must be a multiple of the number of selected options ({len(options)}). Please enter a valid number.")
     
-    else:
-        st.warning("Please select at least one augmentation option.")
+    
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    # if options:
+        
+    #     if (number_of_images % len(options)==0) or (number_of_images==0):                      
+        
+    #         transformed_augment_imgs=[]
+            
+    #         for i in range(int(number_of_images/len(options))):
+    #             img=original_img.copy()  
+                
+            
+    #             if "Translation" in options: 
+    #                 transformed_augment_imgs.append(translation(img))
+                    
+    #             if "Rotation" in options: 
+    #                 transformed_augment_imgs.append(rotation(img))
+                
+    #             if "Scaling" in options:
+    #                 transformed_augment_imgs.append(scaling(img))
+            
+    #             if "Shearing" in options:
+    #                 transformed_augment_imgs.append(shearing(img))
+            
+    #             if "Cropping" in options:
+    #                 transformed_augment_imgs.append(cropping(img))
+            
+    #             if "Brightness" in options:
+    #                 transformed_augment_imgs.append(brightness(img))    
+
+    #             if "Grayscale" in options:
+    #                 transformed_augment_imgs.append(grayscale(img))
+            
+    #             if "Flip Horizontally" in options:
+    #                 transformed_augment_imgs.append(flip_horizontally(img))
+            
+    #             if "Flip Vertically" in options:
+    #                 transformed_augment_imgs.append(flip_vertically(img))                    
+    
+    #         st.write(len(transformed_augment_imgs))
+            
+    #     else:
+    #         st.error(f"The 'Number of Augmented Images Required' must be a multiple of the number of selected options ({len(options)}). Please enter a valid number.")
+    
+    # else:
+    #     st.warning("Please select at least one augmentation option.")
     
 
 
