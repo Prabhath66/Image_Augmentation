@@ -141,7 +141,8 @@ if file_uploader is not None:
                 image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
                 st.image(image,)
         else:
-            st.info("Enter the number of images you want to generate in the sidebar.")
+            st.info("""Please select at least one augmentation option from the sidebar.
+            Enter the number of images you want to generate in the sidebar.""")
     
     else:
         st.info("Please select at least one augmentation option from the sidebar.")
