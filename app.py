@@ -131,7 +131,7 @@ if file_uploader is not None:
 
 
     for i in transformed_augment_imgs:
-        st.image(i)
+        st.image(i, channels="BGR")
     
     
     
