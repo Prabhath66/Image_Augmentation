@@ -6,7 +6,7 @@ import cv2
 
 def trans_rotat_scale(picture,tx=0,ty=0,sx=1,sy=1,shx=0,shy=0):    
     tm=np.array([[sx,shx,tx],[shy,sy,ty]],dtype=np.float32) 
-    trans_img=cv2.warpAffine(picture, tm, dsize=(cols,rows)) 
+    trans_img=cv2.warpAffine(picture, tm, dsize=(cols,rows), borderMode=cv2.BORDER_REFLECT) 
     return trans_img 
 
 def trans_rotation(picture,angle,tx=0,ty=0):
@@ -15,7 +15,7 @@ def trans_rotation(picture,angle,tx=0,ty=0):
     rot_hom = np.append(rot_mat, [[0, 0, 1]], axis=0) # in homogeneous coordinates
     tr_hom = np.append(trans_mat, [[0, 0, 1]], axis=0)
     rm = rot_hom@tr_hom
-    rotat_img=cv2.warpAffine(picture, rm[:2,:], dsize=(cols,rows))
+    rotat_img=cv2.warpAffine(picture, rm[:2,:], dsize=(cols,rows), borderMode=cv2.BORDER_REFLECT)
     return rotat_img   
 
 def cropping(picture):
@@ -149,7 +149,7 @@ if file_uploader is not None:
                 preview_images=st.columns(4) 
                 for i in range(min(4,len(transformed_augment_imgs))):
                     image_= cv2.cvtColor(transformed_augment_imgs[i], cv2.COLOR_BGR2RGB)
-                    preview_images[i].image(image_,caption=f"Augmented_Image-{i}", use_container_width=True)
+                    preview_images[i].image(image_,caption=f"Augmented_Image-{i+1}", use_container_width=True)
                 # for i in transformed_augment_imgs:
                 #     image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
                 #     st.image(image,)
