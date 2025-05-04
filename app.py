@@ -27,7 +27,7 @@ if file_uploader is not None:
         
             transformed_augment_imgs=[]
             
-            for i in range(number_of_images/len(options)):
+            for i in range(int(number_of_images/len(options))):
                 img=original_img.copy() 
         
             
