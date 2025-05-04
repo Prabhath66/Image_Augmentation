@@ -89,7 +89,7 @@ if file_uploader is not None:
                         
                 elif option =="Rotation":
                     angle=np.random.randint(-180,180)
-                    img=trans_rotation(picture,angle)
+                    img=trans_rotation(picture=img,angle=angle)
                     transformed_augment_imgs.append(img)
     
                 elif option =="Scaling":
