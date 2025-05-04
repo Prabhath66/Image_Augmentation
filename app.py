@@ -3,35 +3,18 @@ import numpy as np
 import cv2
 import random  
 
-def translation(picture):
-    tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
-    tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
+def trans_rotat_scale(picture,tx=0,ty=0,sx=0,sy=0,shx=0,shy=0):    
+    tm=np.array([[sx,shx,tx],[shy,sy,ty]],dtype=np.float32) 
     trans_img=cv2.warpAffine(picture, tm, dsize=(cols,rows)) 
     #st.image(trans_img , caption= "Translation Image",  channels="BGR") 
     return trans_img 
 
-def rotation(picture):
-    center=(cols//2, rows//2)
-    angle=np.random.randint(-180,180) 
-    rm=cv2.getRotationMatrix2D(center, angle, 1 )
+def rotation(picture,angle):
+    rm=cv2.getRotationMatrix2D((cols//2, rows//2), angle, 1 )
     rotat_img=cv2.warpAffine(picture, rm, dsize=(cols,rows))
     #st.image(rotat_img , caption="Rotation Image",  channels="BGR" )
     return rotat_img
-
-def scaling(picture):
-    sx, sy =  np.random.uniform(0.5,1.5), np.random.uniform(0.5,1.5) 
-    rm=np.array([[sx,0,0],[0,sy,0]],dtype=np.float32) 
-    scale_img=cv2.warpAffine(picture, rm, dsize=(cols,rows))
-    #st.image(scale_img , caption="Scaling Image",  channels="BGR" )
-    return scale_img 
-
-def shearing(picture):
-    shx, shy =  np.random.uniform(0,0.35), np.random.uniform(0,0.35) 
-    #st.write(f"Shx:{shx}, Sy:{shy}")
-    shm = np.array([[1,shx,0],[shy,1,0]],dtype=np.float32) 
-    shear_img=cv2.warpAffine(picture, shm, dsize=(cols,rows))
-    #st.image(shear_img , caption="Shearing Image",  channels="BGR" ) 
-    return shear_img  
+  
 
 def cropping(picture):
     x1 = random.randint(0, cols // 5)
@@ -44,8 +27,7 @@ def cropping(picture):
     return crop_img
 
 def brightness(picture):
-    bright_arr=np.full((rows,cols,3),np.random.randint(0,120,dtype=np.uint8),)
-    # st.write(bright_arr.shape)  and st.write(img.shape) are equal 
+    bright_arr=np.full((rows,cols,3),np.random.randint(0,120,dtype=np.uint8),) # st.write(bright_arr.shape) and st.write(img.shape) should be equal 
     if np.random.choice(["add", "subtract"]) == "add": 
         bright_img=cv2.add(picture,bright_arr)
     else:
@@ -98,16 +80,20 @@ if file_uploader is not None:
         for option in options: 
 
             if option =="Translation":
-                img=translation(img) 
+                tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
+                img=trans_rotat_scale(img,tx,ty) 
 
             elif option =="Rotation":
-                img=rotation(img) 
+                angle=np.random.randint(-180,180)
+                img=rotation(img,angle) 
 
             elif option =="Scaling":
-                img=scaling(img) 
+                sx, sy =  np.random.uniform(0.5,1.5), np.random.uniform(0.5,1.5)
+                img=trans_rotat_scale(img,sx,sy) 
 
             elif option =="Shearing":
-                img=shearing(img) 
+                shx, shy =  np.random.uniform(0,0.35), np.random.uniform(0,0.35)
+                img=trans_rotat_scale(img,shx,shy) 
 
             elif option =="Cropping":
                 img=cropping(img) 
