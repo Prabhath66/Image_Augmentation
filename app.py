@@ -58,7 +58,7 @@ file_uploader=st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 
 options = st.sidebar.multiselect("Select the options for Image Augmentation", ["Translation", "Rotation", "Scaling", "Shearing","Cropping",
                            "Brightness","Grayscale","Flip Horizontally","Flip Vertically","Combination of Translation, Scaling & Shearing","Combination of Translation & Rotation"] ,
-                             selection_mode="multi")
+                            )
 st.sidebar.markdown(f"Your selected options: {options}.")
 
 number_of_images= st.sidebar.slider("Number of Augmented Images Required:", value=None, min_value=1, max_value=100, step=1, )
