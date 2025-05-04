@@ -144,7 +144,8 @@ if file_uploader is not None:
 
 
     for i in transformed_augment_imgs:
-        st.image(i,)
+        image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
+        st.image(image,)
     
     
     
