@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np 
 import cv2 
 
- 
+
 
 def trans_rotat_scale(picture,tx=0,ty=0,sx=1,sy=1,shx=0,shy=0):    
     tm=np.array([[sx,shx,tx],[shy,sy,ty]],dtype=np.float32) 
@@ -47,9 +47,11 @@ def flip_horizontally(picture):
 
 def flip_vertically(picture):
     flipver_img = cv2.flip(picture, 0)
-    return flipver_img
+    return flipver_img 
 
 
+st.title("Image Augmentation App")
+st.sidebar.header("Image Augmentation Controls")
 
 
 file_uploader=st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])  
@@ -140,12 +142,14 @@ if file_uploader is not None:
             for i in transformed_augment_imgs:
                 image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
                 st.image(image,)
+
+                
         else:
             st.info("""Please select at least one augmentation option from the sidebar.
             Enter the number of images you want to generate in the sidebar.""")
     
-    else:
-        st.info("Please select at least one augmentation option from the sidebar.")
+    # else:
+    #     st.info("Please select at least one augmentation option from the sidebar.")
       
    
 else:
