@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 import random  
 
-def trans_rotat_scale(picture,tx=0,ty=0,sx=0,sy=0,shx=0,shy=0):    
+def trans_rotat_scale(picture,tx=0,ty=0,sx=1,sy=1,shx=0,shy=0):    
     tm=np.array([[sx,shx,tx],[shy,sy,ty]],dtype=np.float32) 
     trans_img=cv2.warpAffine(picture, tm, dsize=(cols,rows)) 
     #st.image(trans_img , caption= "Translation Image",  channels="BGR") 
