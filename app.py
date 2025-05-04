@@ -137,12 +137,9 @@ if file_uploader is not None:
                              
         
             st.write(len(transformed_augment_imgs))
-    
-            
-            # for i in transformed_augment_imgs:
-            #     image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
-            #     st.image(image,)
 
+
+            
             if st.button("Generate Augmented Images", type="primary"): 
 
                 st.subheader("Preview of Few Augumented Images")
@@ -150,9 +147,18 @@ if file_uploader is not None:
                 for i in range(min(4,len(transformed_augment_imgs))):
                     image_= cv2.cvtColor(transformed_augment_imgs[i], cv2.COLOR_BGR2RGB)
                     preview_images[i].image(image_,caption=f"Augmented_Image-{i+1}", use_container_width=True)
-                # for i in transformed_augment_imgs:
-                #     image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
-                #     st.image(image,)
+
+                zip_buffer = io.BytesIO()
+                with zipfile.ZipFile(zip_buffer, "w") as zip_file:
+                    for idx, img in enumerate(transformed_augment_imgs):
+                        is_success, buffer = cv2.imencode(".png", img)
+                        zip_file.writestr(f"augmented_{idx+1}.png", buffer.tobytes())
+                zip_buffer.seek(0) 
+
+
+            st.success(f"✅ {count} Augmented Images Generated!")
+            st.download_button("📁 Download ZIP", zip_buffer, "Augmented_images.zip", "application/zip")
+
 
 
 
@@ -162,8 +168,7 @@ if file_uploader is not None:
 
                 
         else:
-            st.info("""Please select at least one augmentation option from the sidebar.
-            Enter the number of images you want to generate in the sidebar.""")
+            st.info("Enter the number of images you want to generate in the sidebar.")
     
     else:
         st.info("Please select at least one augmentation option from the sidebar to generate augmented images.")
