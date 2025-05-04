@@ -144,9 +144,15 @@ if file_uploader is not None:
             #     st.image(image,)
 
             if st.button("Generate Augmented Images", type="primary"): 
-                for i in transformed_augment_imgs:
-                    image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
-                    st.image(image,)
+
+
+                preview_images=st.columns(4) 
+                for i in range(min(4,len(transformed_augment_imgs))):
+                    preview_img = cv2.cvtColor(transformed_augment_imgs[i], cv2.COLOR_BGR2RGB)
+                    preview_cols[i].image(preview_img, use_container_width=True)
+                # for i in transformed_augment_imgs:
+                #     image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
+                #     st.image(image,)
 
 
 
