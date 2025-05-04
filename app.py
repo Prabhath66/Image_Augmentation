@@ -69,77 +69,79 @@ if file_uploader is not None:
     rows,cols = original_img.shape[0:2]
     #st.write(rows,cols)
 
-
     if options is not None:
-        
-        img=original_img.copy() 
-        transformed_augment_imgs=[]
-    
-        for i in range(number_of_images):         
-            img=original_img.copy()
-            option = np.random.choice(options)
-    
-            if option =="Translation":
-                tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
-                img=trans_rotat_scale(picture=img,tx=tx,ty=ty) 
-                transformed_augment_imgs.append(img) 
-                    
-            elif option =="Rotation":
-                angle=np.random.randint(-180,180)
-                img=trans_rotation(picture,angle)
-                transformed_augment_imgs.append(img)
 
-            elif option =="Scaling":
-                sx, sy =  np.random.uniform(0.5,1.5), np.random.uniform(0.5,1.5)
-                img=trans_rotat_scale(picture=img,sx=sx,sy=sy) 
-                transformed_augment_imgs.append(img) 
-                
-            elif option =="Shearing":
-                shx, shy =  np.random.uniform(0,0.35), np.random.uniform(0,0.35)
-                img=trans_rotat_scale(picture=img,shx=shx,shy=shy) 
-                transformed_augment_imgs.append(img) 
-                
-            elif option =="Cropping":
-                img=cropping(img) 
-                transformed_augment_imgs.append(img) 
-                    
-            elif option =="Brightness":
-                img=brightness(img)
-                transformed_augment_imgs.append(img) 
-                
-            elif option =="Grayscale":
-                img=grayscale(img) 
-                transformed_augment_imgs.append(img) 
-                
-            elif option =="Flip Horizontally":
-                img=flip_horizontally(img) 
-                transformed_augment_imgs.append(img) 
+        if number_of_images is not None:
             
-            elif option =="Flip Vertically":
-                img=flip_vertically(img) 
-                transformed_augment_imgs.append(img) 
-                
-            elif option == "Combination of Translation, Scaling & Shearing":
-                tx, ty=np.random.randint(-60,60), np.random.randint(-60,60)
-                sx, sy =  np.random.uniform(0.5,1.5), np.random.uniform(0.5,1.5)
-                shx, shy =  np.random.uniform(0,0.35), np.random.uniform(0,0.35) 
-                img=trans_rotat_scale(picture=img, tx=tx, ty=ty, sx=sx, sy=sy, shx=shx, shy=shy) 
-                transformed_augment_imgs.append(img) 
-                
-            elif option == "Combination of Translation & Rotation":
-                tx, ty=np.random.randint(-60,60), np.random.randint(-60,60)
-                angle=np.random.randint(-180,180)
-                img=trans_rotation(picture,angle,tx=tx,ty=ty)
-                transformed_augment_imgs.append(img)                                 
-                         
+            img=original_img.copy() 
+            transformed_augment_imgs=[]
+        
+            for i in range(number_of_images):         
+                img=original_img.copy()
+                option = np.random.choice(options)
+        
+                if option =="Translation":
+                    tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
+                    img=trans_rotat_scale(picture=img,tx=tx,ty=ty) 
+                    transformed_augment_imgs.append(img) 
+                        
+                elif option =="Rotation":
+                    angle=np.random.randint(-180,180)
+                    img=trans_rotation(picture,angle)
+                    transformed_augment_imgs.append(img)
     
-        st.write(len(transformed_augment_imgs))
-
-
-        for i in transformed_augment_imgs:
-            image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
-            st.image(image,)
+                elif option =="Scaling":
+                    sx, sy =  np.random.uniform(0.5,1.5), np.random.uniform(0.5,1.5)
+                    img=trans_rotat_scale(picture=img,sx=sx,sy=sy) 
+                    transformed_augment_imgs.append(img) 
+                    
+                elif option =="Shearing":
+                    shx, shy =  np.random.uniform(0,0.35), np.random.uniform(0,0.35)
+                    img=trans_rotat_scale(picture=img,shx=shx,shy=shy) 
+                    transformed_augment_imgs.append(img) 
+                    
+                elif option =="Cropping":
+                    img=cropping(img) 
+                    transformed_augment_imgs.append(img) 
+                        
+                elif option =="Brightness":
+                    img=brightness(img)
+                    transformed_augment_imgs.append(img) 
+                    
+                elif option =="Grayscale":
+                    img=grayscale(img) 
+                    transformed_augment_imgs.append(img) 
+                    
+                elif option =="Flip Horizontally":
+                    img=flip_horizontally(img) 
+                    transformed_augment_imgs.append(img) 
+                
+                elif option =="Flip Vertically":
+                    img=flip_vertically(img) 
+                    transformed_augment_imgs.append(img) 
+                    
+                elif option == "Combination of Translation, Scaling & Shearing":
+                    tx, ty=np.random.randint(-60,60), np.random.randint(-60,60)
+                    sx, sy =  np.random.uniform(0.5,1.5), np.random.uniform(0.5,1.5)
+                    shx, shy =  np.random.uniform(0,0.35), np.random.uniform(0,0.35) 
+                    img=trans_rotat_scale(picture=img, tx=tx, ty=ty, sx=sx, sy=sy, shx=shx, shy=shy) 
+                    transformed_augment_imgs.append(img) 
+                
+                elif option == "Combination of Translation & Rotation":
+                    tx, ty=np.random.randint(-60,60), np.random.randint(-60,60)
+                    angle=np.random.randint(-180,180)
+                    img=trans_rotation(picture,angle,tx=tx,ty=ty)
+                    transformed_augment_imgs.append(img)                                 
+                             
+        
+            st.write(len(transformed_augment_imgs))
     
+    
+            for i in transformed_augment_imgs:
+                image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
+                st.image(image,)
+        else:
+            st.info("Enter the number of images need to be generated")
     
     else:
         st.warning("Please select at least one augmentation option from the sidebar.")
