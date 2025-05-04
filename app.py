@@ -51,11 +51,11 @@ if file_uploader is not None:
                 if "Scaling" in options: 
                     sx, sy =  np.random.uniform(0.3,1.5), np.random.uniform(0.3,1.5) 
                     #st.write(f"Sx:{sx}, Sy:{sy}")
-                rm=np.array([[sx,0,0],[0,sy,0]],dtype=np.float32) 
-                scale_img=cv2.warpAffine(img, rm, dsize=(cols,rows))
-                st.image(scale_img , caption="Scaling Image",  channels="BGR" )
-                transformed_augment_imgs.append(scale_img)
-        
+                    rm=np.array([[sx,0,0],[0,sy,0]],dtype=np.float32) 
+                    scale_img=cv2.warpAffine(img, rm, dsize=(cols,rows))
+                    st.image(scale_img , caption="Scaling Image",  channels="BGR" )
+                    transformed_augment_imgs.append(scale_img)
+            
                 if "Shearing" in options: 
                     shx, shy =  np.random.uniform(0,0.35), np.random.uniform(0,0.35) 
                     #st.write(f"Shx:{shx}, Sy:{shy}")
