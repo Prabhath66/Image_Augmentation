@@ -125,7 +125,7 @@ if file_uploader is not None:
                 img=flip_vertically(img) 
         
         
-    transformed_augment_imgs.append(img)  
+        transformed_augment_imgs.append(img)  
 
     st.write(len(transformed_augment_imgs))
 
