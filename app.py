@@ -82,7 +82,8 @@ if file_uploader is not None:
         
             for i in range(number_of_images):         
                 img=original_img.copy()
-                option = np.random.choice(options)
+                if options:
+                    option = np.random.choice(options)
                                 
                 if option =="Translation":
                     tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
@@ -154,7 +155,7 @@ if file_uploader is not None:
                 with zipfile.ZipFile(zip_buffer, "w") as zip_file:
                     for idx, img in enumerate(transformed_augment_imgs):
                         is_success, buffer = cv2.imencode(".png", img)
-                        zip_file.writestr(f"augmented_{idx+1}.png", buffer.tobytes())
+                        zip_file.writestr(f"Augmented_Image-{idx+1}.png", buffer.tobytes())
                 zip_buffer.seek(0) 
 
 
