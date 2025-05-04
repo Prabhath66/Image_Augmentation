@@ -14,8 +14,8 @@ def trans_rotation(picture,angle,tx=0,ty=0):
     trans_mat=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
     rot_hom = np.append(rot_mat, [[0, 0, 1]], axis=0) # in homogeneous coordinates
     tr_hom = np.append(trans_mat, [[0, 0, 1]], axis=0)
-    rm = np.float32(rot_hom@tr_hom)
-    rotat_img=cv2.warpAffine(picture, rm, dsize=(cols,rows))
+    rm = rot_hom@tr_hom
+    rotat_img=cv2.warpAffine(picture, rm[:2,:], dsize=(cols,rows))
     return rotat_img   
 
 def cropping(picture):
