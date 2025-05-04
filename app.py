@@ -145,11 +145,11 @@ if file_uploader is not None:
 
             if st.button("Generate Augmented Images", type="primary"): 
 
-
+                st.subheader("Preview of Few Augumented Images")
                 preview_images=st.columns(4) 
                 for i in range(min(4,len(transformed_augment_imgs))):
                     image_= cv2.cvtColor(transformed_augment_imgs[i], cv2.COLOR_BGR2RGB)
-                    preview_images[i].image(image_, use_container_width=True)
+                    preview_images[i].image(image_,caption=f"Augmented_Image-{i}", use_container_width=True)
                 # for i in transformed_augment_imgs:
                 #     image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
                 #     st.image(image,)
