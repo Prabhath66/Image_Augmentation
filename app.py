@@ -81,7 +81,7 @@ if file_uploader is not None:
 
             if option =="Translation":
                 tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
-                img=trans_rotat_scale(img,tx,ty) 
+                img=trans_rotat_scale(picture=img,tx=tx,ty=ty) 
 
             elif option =="Rotation":
                 angle=np.random.randint(-180,180)
@@ -89,11 +89,11 @@ if file_uploader is not None:
 
             elif option =="Scaling":
                 sx, sy =  np.random.uniform(0.5,1.5), np.random.uniform(0.5,1.5)
-                img=trans_rotat_scale(img,sx,sy) 
+                img=trans_rotat_scale(picture=img,sx=sx,sy=sy) 
 
             elif option =="Shearing":
                 shx, shy =  np.random.uniform(0,0.35), np.random.uniform(0,0.35)
-                img=trans_rotat_scale(img,shx,shy) 
+                img=trans_rotat_scale(picture=img,shx=shx,shy=shy) 
 
             elif option =="Cropping":
                 img=cropping(img) 
