@@ -13,7 +13,6 @@ st.sidebar.markdown(f"Your selected options: {options}.")
 
 number_of_images=number = st.sidebar.number_input("Number of Augmented Images Required:", value=len(options),min_value=0, step=len(options), placeholder="Type a number...")
 
-count_of_imgs=number_of_images/len(options) if ((number_of_images % len(options)==0) or (number_of_images==0)) else "Enter the number of Images with mutliple of selected Transformations"
 
 if file_uploader is not None:
     file_bytes = np.frombuffer(file_uploader.read(), np.uint8)
