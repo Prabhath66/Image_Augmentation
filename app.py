@@ -61,7 +61,7 @@ options = st.sidebar.multiselect("Select the options for Image Augmentation", ["
                              selection_mode="multi")
 st.sidebar.markdown(f"Your selected options: {options}.")
 
-number_of_images= st.sidebar.slider("Number of Augmented Images Required:", value=None, min_value=1,max_value=100 step=1, )
+number_of_images= st.sidebar.slider("Number of Augmented Images Required:", value=None, min_value=1, max_value=100, step=1, )
 st.write(options)
 
 if file_uploader is not None:
