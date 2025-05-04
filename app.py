@@ -9,7 +9,7 @@ file_uploader=st.file_uploader("Choose an image")
 
 options = st.sidebar.pills("Select the options for Image Augmentation", ["Translation", "Rotation", "Scaling", "Shearing","Cropping", "Brightness","Grayscale","Flip Horizontally","Flip Vertically"] ,
                              selection_mode="multi")
-st.sidebar.markdown(f"Your selected options: {selection}.")
+st.sidebar.markdown(f"Your selected options: {options}.")
 
 number_of_images=number = st.sidebar.number_input("Number of Augmented Images Required:", value=len(options),min_value=0, step=len(options), placeholder="Type a number...")
 
