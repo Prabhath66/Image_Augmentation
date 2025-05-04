@@ -65,7 +65,7 @@ number_of_images= st.sidebar.number_input("Number of Augmented Images Required:"
 if file_uploader is not None:
     file_bytes = np.frombuffer(file_uploader.read(), np.uint8) 
     original_img = cv2.imdecode(file_bytes, 1) # 1 is for color image 
-    st.image(original_img,  caption="Original Image", channels="BGR")
+    #st.image(original_img,  caption="Original Image", channels="BGR")
     rows,cols = original_img.shape[0:2]
     #st.write(rows,cols)
 
