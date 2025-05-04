@@ -7,7 +7,7 @@ def translation(picture):
     tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
     tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
     trans_img=cv2.warpAffine(picture, tm, dsize=(cols,rows)) 
-    st.image(trans_img , caption= "Translation Image",  channels="BGR") 
+    #st.image(trans_img , caption= "Translation Image",  channels="BGR") 
     return trans_img 
 
 def rotation(picture):
@@ -15,14 +15,14 @@ def rotation(picture):
     angle=np.random.randint(-180,180) 
     rm=cv2.getRotationMatrix2D(center, angle, 1 )
     rotat_img=cv2.warpAffine(picture, rm, dsize=(cols,rows))
-    st.image(rotat_img , caption="Rotation Image",  channels="BGR" )
+    #st.image(rotat_img , caption="Rotation Image",  channels="BGR" )
     return rotat_img
 
 def scaling(picture):
     sx, sy =  np.random.uniform(0.3,1.5), np.random.uniform(0.3,1.5) 
     rm=np.array([[sx,0,0],[0,sy,0]],dtype=np.float32) 
     scale_img=cv2.warpAffine(picture, rm, dsize=(cols,rows))
-    st.image(scale_img , caption="Scaling Image",  channels="BGR" )
+    #st.image(scale_img , caption="Scaling Image",  channels="BGR" )
     return scale_img 
 
 def shearing(picture):
@@ -30,7 +30,7 @@ def shearing(picture):
     #st.write(f"Shx:{shx}, Sy:{shy}")
     shm = np.array([[1,shx,0],[shy,1,0]],dtype=np.float32) 
     shear_img=cv2.warpAffine(picture, shm, dsize=(cols,rows))
-    st.image(shear_img , caption="Shearing Image",  channels="BGR" ) 
+    #st.image(shear_img , caption="Shearing Image",  channels="BGR" ) 
     return shear_img  
 
 def cropping(picture):
@@ -40,7 +40,7 @@ def cropping(picture):
     y2 = random.randint(4 * rows // 5, rows)
     crop_img = picture[y1:y2, x1:x2]
     crop_img = cv2.resize(crop_img, (cols, rows)) 
-    st.image(crop_img , caption="Cropping Image",  channels="BGR" )
+    #st.image(crop_img , caption="Cropping Image",  channels="BGR" )
     return crop_img
 
 def brightness(picture):
@@ -50,24 +50,24 @@ def brightness(picture):
         bright_img=cv2.add(picture,bright_arr)
     else:
         bright_img=cv2.subtract(picture,bright_arr)
-    st.image(bright_img , caption="Brightness Image",  channels="BGR" )
+    #st.image(bright_img , caption="Brightness Image",  channels="BGR" )
     return bright_img
 
 def grayscale(picture):
     gray = cv2.cvtColor(picture, cv2.COLOR_BGR2GRAY) # converting img into gray scale with shape (rows,cols)
     gray_img = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR) # converting gray image into bgr image having 3- with shape (rows,cols,depth)
-    st.image(gray_img , caption="GrayScale Image",  )
+    #st.image(gray_img , caption="GrayScale Image",  )
     return gray_img 
 
 
 def flip_horizontally(picture):
     fliphor_img = cv2.flip(picture, 1) 
-    st.image(fliphor_img , caption="Flip Horizontally Image",  channels="BGR" )
+    #st.image(fliphor_img , caption="Flip Horizontally Image",  channels="BGR" )
     return fliphor_img
 
 def flip_vertically(picture):
     flipver_img = cv2.flip(picture, 0)
-    st.image(flipver_img , caption="Flip Vertically Image",  channels="BGR" )
+    #st.image(flipver_img , caption="Flip Vertically Image",  channels="BGR" )
     return flipver_img
 
 
