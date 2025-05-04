@@ -65,7 +65,7 @@ number_of_images= st.sidebar.number_input("Number of Augmented Images Required:"
 if file_uploader is not None:
     file_bytes = np.frombuffer(file_uploader.read(), np.uint8) 
     original_img = cv2.imdecode(file_bytes, 1) # 1 is for color image 
-    #st.image(original_img,  caption="Original Image", channels="BGR")
+    st.image(original_img,  caption="Original Image", channels="BGR")
     rows,cols = original_img.shape[0:2]
     #st.write(rows,cols)
 
@@ -78,8 +78,11 @@ if file_uploader is not None:
         
             for i in range(number_of_images):         
                 img=original_img.copy()
-                option = np.random.choice(options)
-        
+                try:
+                    option = np.random.choice(options)
+                except ValueError:
+                    st.info("Please select at least one augmentation option from the sidebar.") 
+                    
                 if option =="Translation":
                     tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
                     img=trans_rotat_scale(picture=img,tx=tx,ty=ty) 
