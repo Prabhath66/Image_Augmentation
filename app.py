@@ -3,7 +3,21 @@ import numpy as np
 import cv2
 import random  
 
+def translation(picture):
+    tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
+    tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
+    trans_img=cv2.warpAffine(picture, tm, dsize=(cols,rows)) 
+    #st.image(trans_img , caption= "Translation Image",  channels="BGR") 
+    return trans_img 
 
+def rotation(picture)
+    center=(cols//2, rows//2)
+    angle=np.random.randint(-180,180) 
+    rm=cv2.getRotationMatrix2D(center, angle, 1 )
+    rotat_img=cv2.warpAffine(picture, rm, dsize=(cols,rows))
+    #st.image(rotat_img , caption="Rotation Image",  channels="BGR" )
+    return rotat_img
+                
 
 file_uploader=st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])  
 
@@ -32,19 +46,12 @@ if file_uploader is not None:
         
             
                 if "Translation" in options: 
-                    tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
-                    #st.write(f"Tx: {tx}, Ty={ty}")
-                    tm=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
-                    trans_img=cv2.warpAffine(img, tm, dsize=(cols,rows)) 
+                    trans_img=translation(img)
                     st.image(trans_img , caption= "Translation Image",  channels="BGR") 
                     transformed_augment_imgs.append(trans_img)
                     
                 if "Rotation" in options: 
-                    center=(cols//2, rows//2)
-                    angle=np.random.randint(-360,360) 
-                    #st.write(f"Center:{center}, Angle:{angle}")
-                    rm=cv2.getRotationMatrix2D(center, angle, 1 )
-                    rotat_img=cv2.warpAffine(img, rm, dsize=(cols,rows))
+                    rotat_img=rotation(img)
                     st.image(rotat_img , caption="Rotation Image",  channels="BGR" )
                     transformed_augment_imgs.append(rotat_img)
                 
