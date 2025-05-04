@@ -61,7 +61,7 @@ file_uploader=st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 options = st.sidebar.multiselect("Select the options for Image Augmentation", ["Translation", "Rotation", "Scaling", "Shearing","Cropping",
                            "Brightness","Grayscale","Flip Horizontally","Flip Vertically","Combination of Translation, Scaling & Shearing","Combination of Translation & Rotation"] ,
                             default="Grayscale")
-st.sidebar.markdown(f"Your selected options: {options}.")
+# st.sidebar.markdown(f"Your selected options: {options}.")
 
 number_of_images= st.sidebar.slider("Number of Augmented Images Required:", value=6, min_value=1, max_value=100, step=1, )
 
@@ -138,7 +138,7 @@ if file_uploader is not None:
                     transformed_augment_imgs.append(img)                                 
                              
         
-            st.write(len(transformed_augment_imgs))
+            #st.write(len(transformed_augment_imgs))
 
 
             
@@ -159,12 +159,7 @@ if file_uploader is not None:
 
 
                 st.success(f"✅ {number_of_images} Augmented Images Generated!")
-                st.download_button("📁 Download ZIP", zip_buffer, "Augmented_images.zip", "application/zip")
-
-
-
-
-
+                st.download_button("📁 Download Augmented Images ZIP file", zip_buffer, "Augmented_images.zip", "application/zip")
 
             
 
