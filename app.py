@@ -1,7 +1,7 @@
 import streamlit as st 
 import numpy as np 
 import cv2
-import random  
+ 
 
 def trans_rotat_scale(picture,tx=0,ty=0,sx=1,sy=1,shx=0,shy=0):    
     tm=np.array([[sx,shx,tx],[shy,sy,ty]],dtype=np.float32) 
@@ -80,7 +80,7 @@ if file_uploader is not None:
 
     for i in range(number_of_images):         
         img=original_img.copy()
-        option = random.choice(options)
+        option = np.random.choice(options)
 
         if option =="Translation":
             tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
@@ -149,32 +149,7 @@ if file_uploader is not None:
     
     
    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
     
     
     
