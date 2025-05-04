@@ -156,8 +156,8 @@ if file_uploader is not None:
                 zip_buffer.seek(0) 
 
 
-            st.success(f"✅ {number_of_images} Augmented Images Generated!")
-            st.download_button("📁 Download ZIP", zip_buffer, "Augmented_images.zip", "application/zip")
+                st.success(f"✅ {number_of_images} Augmented Images Generated!")
+                st.download_button("📁 Download ZIP", zip_buffer, "Augmented_images.zip", "application/zip")
 
 
 
