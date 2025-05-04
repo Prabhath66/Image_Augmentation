@@ -80,7 +80,7 @@ if file_uploader is not None:
 
     for i in range(number_of_images):         
         img=original_img.copy()
-        option = np.random.choice(options)
+        option = np.random.choice(options,1)
 
         if option =="Translation":
             tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
