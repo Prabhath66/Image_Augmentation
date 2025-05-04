@@ -13,6 +13,7 @@ st.sidebar.markdown(f"Your selected options: {options}.")
 
 number_of_images=number = st.sidebar.number_input("Number of Augmented Images Required:", value=len(options),min_value=0, step=len(options), placeholder="Type a number...")
 
+count_of_imgs=int(number_of_images)/len(options) if options!=0 else "select the Transformations"
 
 if file_uploader is not None:
     file_bytes = np.frombuffer(file_uploader.read(), np.uint8)
@@ -24,7 +25,7 @@ if file_uploader is not None:
     
     transformed_augment_imgs=[]
     
-    for i in range(number_of_images/len(options)):
+    for i in range(count_of_imgs):
         img=original_img.copy() 
 
     
