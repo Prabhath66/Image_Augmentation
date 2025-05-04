@@ -169,5 +169,5 @@ else:
             
 
     
-if st.button("Generate Augmented Images", type="primary"):
+
     
