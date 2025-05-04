@@ -9,8 +9,12 @@ def trans_rotat_scale(picture,tx=0,ty=0,sx=1,sy=1,shx=0,shy=0):
     #st.image(trans_img , caption= "Translation Image",  channels="BGR") 
     return trans_img 
 
-def rotation(picture,angle):
-    rm=cv2.getRotationMatrix2D((cols//2, rows//2), angle, 1 )
+def trans_rotation(picture,angle,tx=0,ty=0):
+    rot_mat=cv2.getRotationMatrix2D((cols//2, rows//2), angle, 1 )
+    trans_mat=np.array([[1,0,tx],[0,1,ty]],dtype=np.float32) 
+    rot_hom = np.append(rot_mat, [[0, 0, 1]], axis=0) # in homogeneous coordinates
+    tr_hom = np.append(trans_mat, [[0, 0, 1]], axis=0)
+    rm = rot_hom@tr_hom
     rotat_img=cv2.warpAffine(picture, rm, dsize=(cols,rows))
     #st.image(rotat_img , caption="Rotation Image",  channels="BGR" )
     return rotat_img   
@@ -87,7 +91,7 @@ if file_uploader is not None:
 
             elif option =="Rotation":
                 angle=np.random.randint(-180,180)
-                img=rotation(img,angle) 
+                img=trans_rotation(picture,angle)
                 transformed_augment_imgs.append(img)
 
             elif option =="Scaling":
@@ -139,7 +143,7 @@ if file_uploader is not None:
             elif option == "Combination of Translation & Rotation":
                 tx, ty=np.random.randint(-60,60), np.random.randint(-60,60)
                 angle=np.random.randint(-180,180)
-                img=rotation(img,angle)
+                img=trans_rotation(picture,angle,tx=tx,ty=ty)
                 transformed_augment_imgs.append(img) 
                 break
 
