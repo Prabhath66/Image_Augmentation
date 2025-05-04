@@ -145,8 +145,8 @@ if file_uploader is not None:
 
             if st.button("Generate Augmented Images", type="primary"): 
                 for i in transformed_augment_imgs:
-                image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
-                st.image(image,)
+                    image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
+                    st.image(image,)
 
 
 
