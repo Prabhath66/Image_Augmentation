@@ -1,6 +1,7 @@
 import streamlit as st 
 import numpy as np 
-import cv2
+import cv2 
+
  
 
 def trans_rotat_scale(picture,tx=0,ty=0,sx=1,sy=1,shx=0,shy=0):    
@@ -20,10 +21,10 @@ def trans_rotation(picture,angle,tx=0,ty=0):
     return rotat_img   
 
 def cropping(picture):
-    x1 = random.randint(0, cols // 5)
-    y1 = random.randint(0, rows // 5)
-    x2 = random.randint(4 * cols // 5, cols)
-    y2 = random.randint(4 * rows // 5, rows)
+    x1 = np.random.randint(0, cols // 5)
+    y1 = np.random.randint(0, rows // 5)
+    x2 = np.random.randint(4 * cols // 5, cols)
+    y2 = np.random.randint(4 * rows // 5, rows)
     crop_img = picture[y1:y2, x1:x2]
     crop_img = cv2.resize(crop_img, (cols, rows)) 
     #st.image(crop_img , caption="Cropping Image",  channels="BGR" )
