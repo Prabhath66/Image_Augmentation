@@ -60,7 +60,7 @@ options = st.sidebar.pills("Select the options for Image Augmentation", ["Transl
 st.sidebar.markdown(f"Your selected options: {options}.")
 
 number_of_images= st.sidebar.number_input("Number of Augmented Images Required:", value=None, min_value=1, step=1, placeholder="Type a number...")
-
+st.write(options)
 
 if file_uploader is not None:
     file_bytes = np.frombuffer(file_uploader.read(), np.uint8) 
@@ -78,11 +78,8 @@ if file_uploader is not None:
         
             for i in range(number_of_images):         
                 img=original_img.copy()
-                try:
-                    option = np.random.choice(options)
-                except ValueError:
-                    st.info("Please select at least one augmentation option from the sidebar.") 
-                    
+                option = np.random.choice(options)
+                                
                 if option =="Translation":
                     tx, ty=np.random.randint(-60,60), np.random.randint(-60,60) 
                     img=trans_rotat_scale(picture=img,tx=tx,ty=ty) 
