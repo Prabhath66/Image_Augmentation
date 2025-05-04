@@ -141,7 +141,7 @@ if file_uploader is not None:
             st.image(image,)
     
     
-     else:
+    else:
         st.warning("Please select at least one augmentation option from the sidebar.")
       
    
