@@ -19,7 +19,7 @@ def rotation(picture):
     return rotat_img
 
 def scaling(picture):
-    sx, sy =  np.random.uniform(0.3,1.5), np.random.uniform(0.3,1.5) 
+    sx, sy =  np.random.uniform(0.5,1.5), np.random.uniform(0.5,1.5) 
     rm=np.array([[sx,0,0],[0,sy,0]],dtype=np.float32) 
     scale_img=cv2.warpAffine(picture, rm, dsize=(cols,rows))
     #st.image(scale_img , caption="Scaling Image",  channels="BGR" )
@@ -44,7 +44,7 @@ def cropping(picture):
     return crop_img
 
 def brightness(picture):
-    bright_arr=np.full((rows,cols,3),np.random.randint(0,157,dtype=np.uint8),)
+    bright_arr=np.full((rows,cols,3),np.random.randint(0,120,dtype=np.uint8),)
     # st.write(bright_arr.shape)  and st.write(img.shape) are equal 
     if np.random.choice(["add", "subtract"]) == "add": 
         bright_img=cv2.add(picture,bright_arr)
