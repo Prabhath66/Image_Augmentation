@@ -58,11 +58,11 @@ file_uploader=st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 
 options = st.sidebar.multiselect("Select the options for Image Augmentation", ["Translation", "Rotation", "Scaling", "Shearing","Cropping",
                            "Brightness","Grayscale","Flip Horizontally","Flip Vertically","Combination of Translation, Scaling & Shearing","Combination of Translation & Rotation"] ,
-                            )
+                            default="Grayscale")
 st.sidebar.markdown(f"Your selected options: {options}.")
 
-number_of_images= st.sidebar.slider("Number of Augmented Images Required:", value=None, min_value=1, max_value=100, step=1, )
-st.write(options)
+number_of_images= st.sidebar.slider("Number of Augmented Images Required:", value=6, min_value=1, max_value=100, step=1, )
+
 
 if file_uploader is not None:
     file_bytes = np.frombuffer(file_uploader.read(), np.uint8) 
@@ -138,10 +138,21 @@ if file_uploader is not None:
         
             st.write(len(transformed_augment_imgs))
     
-    
-            for i in transformed_augment_imgs:
+            
+            # for i in transformed_augment_imgs:
+            #     image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
+            #     st.image(image,)
+
+            if st.button("Generate Augmented Images", type="primary"): 
+                for i in transformed_augment_imgs:
                 image=cv2.cvtColor(i,cv2.COLOR_BGR2RGB)
                 st.image(image,)
+
+
+
+
+
+            
 
                 
         else:
@@ -158,4 +169,5 @@ else:
             
 
     
-
+if st.button("Generate Augmented Images", type="primary"):
+    
