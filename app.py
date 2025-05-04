@@ -10,7 +10,7 @@ def translation(picture):
     #st.image(trans_img , caption= "Translation Image",  channels="BGR") 
     return trans_img 
 
-def rotation(picture)
+def rotation(picture):
     center=(cols//2, rows//2)
     angle=np.random.randint(-180,180) 
     rm=cv2.getRotationMatrix2D(center, angle, 1 )
