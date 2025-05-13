@@ -148,14 +148,12 @@ if file_uploader is not None:
 
                 st.subheader("Preview of Few Augumented Images") 
                 with st.spinner("Generating Preview Images Please wiat...", show_time=True):
-                    time.sleep(6)
-                preview_images=st.columns(4) 
-                for i in range(min(4,len(transformed_augment_imgs))):
+                    time.sleep(2)
+                preview_images=st.columns(3) 
+                for i in range(min(3,len(transformed_augment_imgs))):
                     image_= cv2.cvtColor(transformed_augment_imgs[i], cv2.COLOR_BGR2RGB)                     
                     preview_images[i].image(image_,caption=f"Augmented_Image-{i+1}", use_container_width=True)
                     
-                # with st.spinner("Generating Images Please wiat...", show_time=True):
-                #     time.sleep(5)
 
                 zip_buffer = io.BytesIO()
                 with zipfile.ZipFile(zip_buffer, "w") as zip_file:
