@@ -148,7 +148,7 @@ if file_uploader is not None:
 
                 st.subheader("Preview of Few Augumented Images") 
                 with st.spinner("Generating Preview Images Please wiat...", show_time=True):
-                    time.sleep(2)
+                    time.sleep(0)
                 preview_images=st.columns(3) 
                 for i in range(min(3,len(transformed_augment_imgs))):
                     image_= cv2.cvtColor(transformed_augment_imgs[i], cv2.COLOR_BGR2RGB)                     
