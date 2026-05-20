@@ -205,6 +205,4 @@ This project is open-source and available under the [MIT License](LICENSE).
 
 ---
 
-Made with ❤️ and 🖼️ by [Prabhath66](https://github.com/Prabhath66)
-
 ⭐ **If this project helped you, drop a star!** ⭐
